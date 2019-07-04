@@ -1,8 +1,10 @@
 var express = require('express');
 
-//var app = express();
+var app = express();
 
-const PORT = 3000;
+var port = process.env.PORT || 3000;
+app.get('/',(req,res)=> res.send('Mongo!!!'));
+
 
  // Cargamos el módulo de mongoose para poder conectarnos a MongoDB
  var mongoose = require('mongoose');
@@ -15,8 +17,10 @@ const PORT = 3000;
              console.log('La conexión a MongoDB se ha realizado correctamente!!');
          })
          .catch(err => console.log(err));
+
+         app.listen(port,()=>console.log('corriendo'));
          // Si no se conecta correctamente escupimos el error
-       // module.exports=app;
+       module.exports=app;
 
 /*var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/mydb";
